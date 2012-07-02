@@ -2,10 +2,13 @@ development:
   adapter: postgresql
   database: treefinger_development
 
-test:
+test: &test
   adapter: postgresql
   database: treefinger_test
 
 production:
   adapter: postgresql
   database: treefinger_production
+
+cucumber:
+  <<: *test
