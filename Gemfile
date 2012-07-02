@@ -20,6 +20,10 @@ group :test do
   gem 'database_cleaner'
 end
 
+group :development do
+  gem 'heroku'
+end
+
 group :development, :test do
   gem 'fabrication'
 end
