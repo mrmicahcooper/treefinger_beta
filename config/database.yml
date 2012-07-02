@@ -1,0 +1,11 @@
+development:
+  adapter: postgresql
+  database: treefinger_development
+
+test:
+  adapter: postgresql
+  database: treefinger_test
+
+production:
+  adapter: postgresql
+  database: treefinger_production
