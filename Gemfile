@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'jquery-rails'
 gem 'rails', '3.2.6'
 gem 'pg'
+gem 'thin'
 
 
 group :assets do
