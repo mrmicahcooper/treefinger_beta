@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %title Tree Finger
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    %header
+      %nav
+        = link_to 'about'
+      %h1 Tree Finger
+    = yield
