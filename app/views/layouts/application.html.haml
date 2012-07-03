@@ -7,7 +7,21 @@
     = csrf_meta_tags
   %body
     %header
-      %nav
+      %nav.settings
+        = link_to 'my account'
+        |
         = link_to 'about'
-      %h1 Tree Finger
-    = yield
+      %h1
+        Tree Finger
+        ="\u27BF"
+      %nav.projects
+        = link_to 'Project 1'
+        |
+        = link_to 'Project 2', '#', class: 'active'
+        |
+        = link_to 'Project 3'
+        |
+        = link_to 'Project 4'
+        |
+    %section.content
+      = yield

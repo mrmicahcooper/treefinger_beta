@@ -1,0 +1,9 @@
+%fieldset.actions
+  %nav.status
+    = link_to 'incomplete','#', class: 'active'
+    |
+    = link_to 'complete','#'
+    |
+    = link_to 'all','#'
+  %input{ type: 'submit', value: "Save tasks" }
+  %input{ type: 'reset', value: "clear" }

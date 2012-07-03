@@ -1,9 +1,11 @@
 source 'https://rubygems.org'
 
+gem 'decent_exposure'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'rails', '3.2.6'
 gem 'pg'
+gem 'rdiscount'
 gem 'thin'
 
 

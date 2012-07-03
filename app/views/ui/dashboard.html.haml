@@ -1,0 +1,14 @@
+%section#task_list
+  %ul
+    -5.times do |i|
+      %li(data-task= "#{task_string}")
+        .actions
+          = link_to "\u2713 complete", '#', class: 'complete' #complete
+          = link_to "\u270E ", '#', class: 'edit' #edit
+        .delete= link_to "x",'#', class: 'delete' #delete
+        %strong.task_name task name
+%section.task_form
+  %form
+    = render partial: 'task_actions'
+    %fieldset.fields
+      %textarea#task_form{ placeholder: "tasks" }

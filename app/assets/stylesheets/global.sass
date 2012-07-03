@@ -1,21 +1,145 @@
+@import "mixins"
+$dark_grey: #444444
+$task_form_width: 500px
+$active_blue: #146bfb
+$button_green: #029f1c
+
 body
   font-family: 'arial', sans-serif
   margin: 0
-  color: #333333
+  color: $dark_grey
+  font-size: 14px
   a
     text-decoration: none
-    color: #000000
+    color: #666666
   header
-    border-bottom: solid 1px #333333
-    padding: 3px 1em
-    nav
+    border-bottom: solid 1px $dark_grey
+    position: fixed
+    z-index: 1
+    width: 100%
+    background: #ffffff
+    nav.settings
       float: right
+      padding: 14px 12px 0 0
       a
-        font-size: 12px
-        letter-spacing: -1px
-    h1 
-      font-size: 16px
-      letter-spacing: -2px
+        font-size: 14px
+    nav.projects
+      display: inline-block
+      a
+        &.active
+          font-weight: bold
+          color: $active_blue
+    h1
+      font-size: 18px
+      letter-spacing: -1px
       margin: 0px
-
-
+      padding: 5px 0 5px 1em
+      display: inline-block
+      span.project_name
+        color: $active_blue
+  section.content
+    padding: 75px 0 1em 0
+    display: block
+    margin: 0 0 0 35px
+    section.sign_in, section.sign_up
+      margin: 0 auto
+      form
+        width: 200px
+        h1
+          font-size: 16px
+          letter-spacing: -1px
+          margin: 0px
+        fieldset
+          border: none
+          padding: 0
+          input[type="submit"]
+            +button-skeleton(3px, $button_green)
+            background-color: $button_green
+            font-size: 14px
+            color: #ffffff
+          dl
+            dd
+              margin: 0
+              input[type="text"], input[type="password"]
+                font-size: 14px
+                width: 100%
+                margin: 0.5em
+                padding: 5px
+                +round-border(3px, #aaaaaa)
+    section.task_form
+      width: $task_form_width
+      top: 35px
+      position: fixed
+      nav.status
+        float: right
+        margin: 22px 0 0 0
+        a.active
+          font-weight: bold
+          color: $active_blue
+      form
+        fieldset
+          border: none
+          padding: 0
+          &.fields
+          textarea
+            width: 100%
+            padding: 5px
+            font-size: 14px
+            min-height: 500px
+            +round-border(3px, #aaaaaa)
+          &.actions
+            input[type="submit"]
+              +button-skeleton(3px, $button_green)
+              background: $button_green
+              display: inline
+              color: #ffffff
+    section#task_list
+      width: 600px
+      position: relative
+      vertical-align: top
+      left: $task_form_width + 20px
+      &>ul
+        padding: 0px
+        margin: 0px
+        li
+          input
+            +round-border(3px, #ffffff)
+            margin-top: -2px
+            border: solid 1px $active_blue
+          list-style: none
+          padding: 10px 4px 7px 4px
+          border: solid 1px #fff
+          +round-border(3px, none)
+          &:nth-child(odd)
+            background: #eeeeee
+          &:hover
+            background: #a3d1fc
+            border: solid 1px #aaaaaa
+          &.selected
+            background: $active_blue
+          &:hover, &.selected
+            color: #ffffff
+            div.actions, div.delete
+              color: #ffffff
+              a
+                color: #fff
+                border: solid 1px #ffffff
+          div.actions, div.delete
+            float: left
+            padding: 0 10px 0 0
+            a
+              padding: 2px 5px
+              +round-border(3px, #dddddd)
+              &:hover
+                color: #ffffff
+                border: solid 1px #ffffff
+              &.complete:hover
+                background: $button_green
+              &.edit:hover
+                background: #8706e2
+          div.delete
+            float: right
+            padding: 0 10px 0 0
+            a
+              &.delete:hover
+                background: #e20606

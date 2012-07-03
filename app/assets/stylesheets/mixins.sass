@@ -1,0 +1,10 @@
+= round-border($radius, $color)
+  -moz-border-radius: $radius
+  border-radius: $radius
+  border: solid 1px $color
+
+= button-skeleton($radius, $color)
+  display: block
+  font-weight: bold
+  padding: 8px
+  +round-border($radius, $color)
