@@ -29,4 +29,6 @@ end
 group :development, :test do
   gem 'fabrication'
   gem 'pry'
+  gem 'therubyracer'
+
 end
