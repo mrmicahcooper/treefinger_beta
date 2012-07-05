@@ -1,0 +1,10 @@
+%section.sign_in
+  = form_tag sessions_path do
+    %h1 Sign In
+    %fieldset
+      %dl
+        %dd= text_field_tag :email, nil, placeholder: 'email'
+        %dd= password_field_tag :password, nil, placeholder: 'password'
+    %fieldset
+      %input{type: 'submit', value: 'sign in'}
+

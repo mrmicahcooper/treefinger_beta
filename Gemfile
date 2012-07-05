@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'bcrypt-ruby'
 gem 'decent_exposure'
 gem 'haml-rails'
 gem 'jquery-rails'
@@ -30,5 +31,5 @@ group :development, :test do
   gem 'fabrication'
   gem 'pry'
   gem 'therubyracer'
-
+  gem 'dirty'
 end
