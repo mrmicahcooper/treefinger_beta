@@ -10,7 +10,14 @@ class SessionsController < ApplicationController
     if authenticated?
       session[:user_id] = user.id
       redirect_to root_path
+    else
+      redirect_to :sign_in, alert: 'invalid credentials'
     end
+  end
+
+  def destroy
+    session.delete(:user_id)
+    redirect_to :sign_in
   end
 
 end

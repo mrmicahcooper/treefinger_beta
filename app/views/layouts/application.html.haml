@@ -9,6 +9,7 @@
     %header
       %nav.settings
         - if current_user.present?
+          = link_to 'sign out', :sign_out
         - else
           = link_to 'sign in', :sign_in
       %h1
