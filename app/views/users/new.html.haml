@@ -1,0 +1,12 @@
+%section.sign_up
+  = form_for user, url: :user_sign_up do |form|
+    %h1 Sign Up
+    %fieldset
+      %dl
+        %dd= form.email_field     :email, placeholder: 'email'
+        %dd= form.text_field      :username, placeholder: 'username (optional)'
+        %dd= form.password_field  :password, placeholder: 'password'
+        %dd= form.password_field  :password_confirmation, placeholder: 'password confirmation'
+    %fieldset
+      = form.submit 'sign up'
+      = link_to 'sign in', :sign_in

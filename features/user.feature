@@ -1,5 +1,16 @@
 Feature: User
 
+  Scenario: User registers successfully
+    Given I am on the home page
+    And I follow "sign up"
+    When I fill in the following:
+      | user_email                 | sam@example.com |
+      | user_username              | sam             |
+      | user_password              | password        |
+      | user_password_confirmation | password        |
+    And I press "sign up"
+    Then I should be on the root page
+
   Scenario: User signs in with email
     Given I am on the home page
     And the following user:

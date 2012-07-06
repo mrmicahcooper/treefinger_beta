@@ -1,5 +1,7 @@
 class UiController < ApplicationController
 
+  skip_before_filter :authenticate_user!
+
   expose(:task_string) do
     <<-TASK
 User signs in. 8/8/2012 5:40pm
