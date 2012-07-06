@@ -11,7 +11,8 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_path
     else
-      redirect_to :sign_in, alert: 'invalid credentials'
+      flash.now[:alert] = "invalid credentials"
+      render 'new'
     end
   end
 

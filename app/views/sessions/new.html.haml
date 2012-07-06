@@ -1,13 +1,13 @@
 %section.sign_in
-  = form_tag sessions_path do
+  = form_tag :user_sign_in do
     %h1 
       Sign In
       - if flash[:alert]
         %span.alert= "\u27BF #{flash[:alert]}"
     %fieldset
       %dl
-        %dd= text_field_tag :email_or_username, nil, placeholder: 'email or username'
-        %dd= password_field_tag :password, nil, placeholder: 'password'
+        %dd= text_field_tag :email_or_username, params[:email_or_username], placeholder: 'email or username'
+        %dd= password_field_tag :password, params[:password], placeholder: 'password'
     %fieldset
       %input{type: 'submit', value: 'sign in'}
       = link_to 'sign up', :sign_up
