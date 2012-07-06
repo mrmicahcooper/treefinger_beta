@@ -1,10 +1,11 @@
-require_relative '../../app/models/project.rb'
-require_relative '../../app/models/task.rb'
+require 'taskdown'
+require 'taskdown/project.rb'
+require 'taskdown/task.rb'
 
-describe Project do
+describe Taskdown::Project do
 
   let(:project_string) { File.read('spec/fixtures/project.td') }
-  let(:project) { Project.new(project_string) }
+  let(:project) { Taskdown::Project.new(project_string) }
 
   describe ".new" do
 

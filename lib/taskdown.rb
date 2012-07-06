@@ -1,17 +1,20 @@
 class Taskdown
+  require 'taskdown/project'
 
-  attr_accessor :projects_string
+  attr_accessor :string
 
   def initialize(string)
-    self.projects_string = string
+    self.string = string
   end
 
   def self.parse(string)
-    projects = string.split(/^!/).select { |element| element.length > 0 }
-    projectest.each map do |project|
-      Project.new(project)
+    new(string).projects.map do |p|
+      Project.new(p)
     end
   end
 
-end
+  def projects
+    @projects ||= string.split(/^!/).select { |element| element.length > 0 }
+  end
 
+end

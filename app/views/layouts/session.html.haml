@@ -8,14 +8,8 @@
   %body
     %header
       %nav.settings
-        = link_to 'sign out', :sign_out
+        = link_to 'sign in', :sign_in
       %h1
         Tree Finger
-        = "\u27BF" if projects.present?
-      - if projects.present?
-        %nav.projects
-          - projects.each do |project|
-            = link_to project.name
-            |
     %section.content
       = yield

@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+  layout 'session'
+
   skip_before_filter :authenticate_user!, only: [:create, :new]
 
   expose(:email_or_username) { params[:email_or_username] }

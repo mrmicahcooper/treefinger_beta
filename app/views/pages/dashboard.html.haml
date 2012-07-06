@@ -1,0 +1,22 @@
+%section#task_list
+  %ul
+    - tasks.each do |task|
+      %li(data-task= "#{task.string}")
+        .actions
+          = link_to "\u2713 complete", '#', class: 'complete' #complete
+          = link_to "\u270E ", '#', class: 'edit' #edit
+        .delete= link_to "x",'#', class: 'delete' #delete
+        %strong.task_name task.name
+%section.task_form
+  = form_tag :projects do
+    %fieldset.actions
+      %nav.status
+        = link_to 'incomplete','#', class: 'active'
+        |
+        = link_to 'complete','#'
+        |
+        = link_to 'all','#'
+      = submit_tag 'save tasks'
+      %input{ type: 'reset', value: "clear" }
+    %fieldset.fields
+      = text_area_tag :projects, nil, placeholder: "build your project and tasks here"
