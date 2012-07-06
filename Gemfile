@@ -16,13 +16,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :test do
-  gem 'rspec-rails'
-  gem 'cucumber-rails'
-  gem 'launchy'
-  gem 'database_cleaner'
-end
-
 group :development do
   gem 'heroku'
 end
@@ -30,6 +23,13 @@ end
 group :development, :test do
   gem 'fabrication'
   gem 'pry'
+  gem 'rspec-rails'
   gem 'therubyracer'
+end
+
+group :test do
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
   gem 'dirty'
+  gem 'launchy'
 end
