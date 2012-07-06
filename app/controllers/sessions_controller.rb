@@ -2,8 +2,8 @@ class SessionsController < ApplicationController
 
   skip_before_filter :authenticate_user!, only: [:create, :new]
 
-  expose(:email) { params[:email] }
-  expose(:user) { User.find_by_email(email) }
+  expose(:email_or_username) { params[:email_or_username] }
+  expose(:user) { User.find_by_email_or_username(email_or_username) }
   expose(:authenticated?) { user.present? && user.authenticate(params[:password]) }
 
   def create
