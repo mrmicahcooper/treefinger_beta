@@ -10,7 +10,7 @@
       %nav.settings
         = link_to 'sign out', :sign_out
       %h1
-        Tree Finger
+        = link_to 'Tree Finger', root_path
         = "\u27BF" if projects.present?
       - if projects.present?
         %nav.projects
