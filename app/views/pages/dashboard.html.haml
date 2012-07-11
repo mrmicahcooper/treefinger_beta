@@ -1,7 +1,7 @@
 %section#task_list
   %ul
     - tasks.each do |task|
-      %li(data-task= "#{task.string}")
+      %li(data-task= "#{}")
         .actions
           = link_to "\u2713 complete", '#', class: 'complete' #complete
           = link_to "\u270E ", '#', class: 'edit' #edit
@@ -17,6 +17,10 @@
         |
         = link_to 'all','#'
       = submit_tag 'save tasks'
-      %input{ type: 'reset', value: "clear" }
+      %input{ type: 'reset', value: "clear tasks" }
     %fieldset.fields
-      = text_area_tag :projects, nil, placeholder: "build your project and tasks here"
+      = text_area_tag :projects
+    %fieldset.actions
+      = submit_tag 'save tasks'
+      %input{ type: 'reset', value: "clear tasks" }
+%pre.placeholder=  "! Project name\n\nFirst task name. 12/12/2012 5:30pm\n\nThis is the task description.\nNotice the above task name has a date and time.\nThat is the task's optional due date.\nYou can have Treefinger email this as a calendar item.\nIt's quite convenient.\n---\n\nSecond task name. 1/1/2013\n\nThis is the description for the second task.\nNotice this task is separated from the above\ntask with the 3 dashes(---)"

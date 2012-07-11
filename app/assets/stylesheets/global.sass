@@ -78,9 +78,13 @@ body
                 margin: 0.5em 0
                 padding: 5px
                 +round-border(3px, #aaaaaa)
+    pre.placeholder
+      color: #cccccc
+      margin: 28px 0 0 18px
+      font-family: 'arial', sans-serif
     section.task_form
       width: $task_form_width
-      top: 35px
+      top: 40px
       position: fixed
       nav.status
         float: right
@@ -91,7 +95,6 @@ body
       form
         fieldset
           border: none
-          padding: 0
           &.fields
           textarea
             width: 100%
@@ -99,6 +102,7 @@ body
             font-size: 14px
             min-height: 500px
             +round-border(3px, #aaaaaa)
+            background: transparent
           &.actions
             input[type="submit"]
               +button-skeleton(3px, $button_green)

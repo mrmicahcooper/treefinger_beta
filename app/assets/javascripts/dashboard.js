@@ -1,15 +1,24 @@
 $(function(){
   var dashboard = {
       init: function(){
-        this.initTasks();
-      },
-      initTasks: function(){
         $('#task_list ul li').click(this.showInTasksForm);
         $('.task_form form input[type="reset"]').click(this.clearSelectedTasks)
         $("body").delegate('input.edit_task_name','blur', this.editTaskName);
+        //use bind for name spacing
         $('li a.complete').click(this.completeTask);
         $('li a.delete').click(this.deleteTask);
         $('li a.edit').click(this.editTask);
+        $('#projects').bind('keyup.placeholder', this.togglePlaceholder)
+      },
+      togglePlaceholder: function(){
+        var e = $(this);
+        if (e.val().trim() == ""){
+          $('pre.placeholder').show();
+          e.val('');
+        }
+        else{
+          $('pre.placeholder').hide();
+        }
       },
       completeTask: function(e){
         e.stopPropagation();
@@ -81,7 +90,7 @@ $(function(){
         return $('#task_list ul li.selected').map(function(){
           return $(this).removeClass('selected');
         })
-      }
+      },
     };
   dashboard.init();
 });
