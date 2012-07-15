@@ -5,7 +5,13 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
 
   expose(:current_user) { User.find_by_id(session[:user_id]) }
-  expose(:projects) { current_user.projects }
+  expose(:projects) do
+    if current_user.present?
+      current_user.projects
+    else
+      []
+    end
+  end
 
   def authenticate_user!
     unless current_user.present?
