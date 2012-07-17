@@ -44,6 +44,7 @@ body
     padding: 75px 0 1em 0
     display: block
     margin: 0 0 0 35px
+    position: relative
     section.sign_in, section.sign_up
       margin: 0 auto
       form
@@ -80,8 +81,11 @@ body
                 +round-border(3px, #aaaaaa)
     pre.placeholder
       color: #cccccc
-      margin: 28px 0 0 18px
       font-family: 'arial', sans-serif
+      position: absolute
+      top: 90px
+      left: 20px
+      z-index: 1
     section.task_form
       width: $task_form_width
       top: 40px
@@ -103,6 +107,8 @@ body
             min-height: 500px
             +round-border(3px, #aaaaaa)
             background: transparent
+            z-index: 2
+            position: relative
           &.actions
             input[type="submit"]
               +button-skeleton(3px, $button_green)

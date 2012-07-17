@@ -4,7 +4,6 @@ $(function(){
         $('#task_list ul li').click(this.showInTasksForm);
         $('.task_form form input[type="reset"]').click(this.clearSelectedTasks)
         $("body").delegate('input.edit_task_name','blur', this.editTaskName);
-        //use bind for name spacing
         $('li a.complete').click(this.completeTask);
         $('li a.delete').click(this.deleteTask);
         $('li a.edit').click(this.editTask);

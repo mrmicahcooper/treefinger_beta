@@ -1,5 +1,5 @@
 class Taskdown
-  require 'taskdown/project'
+  require 'taskdown/list'
 
   attr_accessor :string
 
@@ -8,13 +8,13 @@ class Taskdown
   end
 
   def self.parse(string)
-    new(string).projects.map do |p|
-      Project.new(p)
+    new(string).lists.map do |p|
+      Taskdown::List.new(p)
     end
   end
 
-  def projects
-    @projects ||= string.split(/^!/).select { |element| element.length > 0 }
+  def lists
+    @lists ||= string.split(/^!/).select { |element| element.length > 0 }
   end
 
 end

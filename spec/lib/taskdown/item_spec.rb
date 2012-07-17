@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe Task do
+describe Taskdown::Item do
 
-  let(:task_string) { File.read 'spec/fixtures/task.td' }
-  let(:task) { Task.new(task_string) }
+  let(:item_string) { File.read 'spec/fixtures/task.td' }
+  let(:task) { Taskdown::Item.new(item_string) }
 
   describe '.new' do
     it "returns a task object" do
-      task.task_string.should == task_string
+      task.item_string.should == item_string
     end
   end
 
@@ -59,6 +59,30 @@ DESC
     it 'returns the description' do
       task.description.should == description.strip
     end
+  end
+
+  describe "#attr_hash" do
+
+    let(:description) do
+      <<-DESC
+Given I am on the home page
+When I go to the __signup__ page
+And I fill in the following __form__:
+- email
+- password
+And I submit it
+Then I should have a new account
+      DESC
+    end
+
+    it "returns a hash of the task's attributes" do
+      task.attr_hash.should == {
+        name: "User signs in.",
+        due_at: Time.parse('8/8/2012 5:40PM'),
+        description: description.strip
+      }
+    end
+
   end
 
 
