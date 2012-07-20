@@ -4,24 +4,24 @@ require 'taskdown/item.rb'
 
 describe Taskdown::List do
 
-  let(:project_string) { File.read('spec/fixtures/project.td') }
-  let(:project) { Taskdown::List.new(project_string) }
+  let(:list_string) { File.read('spec/fixtures/list.td') }
+  let(:list) { Taskdown::List.new(list_string) }
 
   describe ".new" do
 
     it "creates an object with the items string" do
-      project.item_string.should_not be_nil
+      list.item_string.should_not be_nil
     end
 
-    it "names the project" do
-      project.name.should == "Treefinger"
+    it "names the list" do
+      list.name.should == "Treefinger"
     end
 
   end
 
   describe '.items' do
     it 'returns a collection of items' do
-      project.items.count.should == 2
+      list.items.count.should == 2
     end
   end
 

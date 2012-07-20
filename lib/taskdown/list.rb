@@ -4,7 +4,9 @@ class Taskdown::List
   attr_accessor :name, :item_string
 
   def initialize(string)
-    self.name, self.item_string = string.split("\n",2)
+    project_string = string.split("\n",2)
+    self.name = project_string.first.squish
+    self.item_string = project_string.last
   end
 
   def items

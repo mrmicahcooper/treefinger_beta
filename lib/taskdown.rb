@@ -9,12 +9,12 @@ class Taskdown
 
   def self.parse(string)
     new(string).lists.map do |p|
-      Taskdown::List.new(p)
+      Taskdown::List.new(p.strip)
     end
   end
 
   def lists
-    @lists ||= string.split(/^!/).select { |element| element.length > 0 }
+    @lists ||= string.split(/^!/).select{ |element| element.length > 0 }
   end
 
 end
