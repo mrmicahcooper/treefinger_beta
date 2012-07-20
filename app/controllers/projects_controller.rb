@@ -1,14 +1,10 @@
-class ProjectsController < ApplicationController
+class ProjectsController < PagesController
+  #pages controller has all the project goodies needed here
 
-  expose(:project) { current_user.projects.last }
   expose(:project_string) { params[:projects] }
-
-  expose(:lists) do
-    Taskdown.parse(project_string)
-  end
+  expose(:lists) { Taskdown.parse(project_string) }
 
   def create
-
     lists.each do |list|
       current_user.projects.find_or_create_by_name(list.name).tap do |project|
         list.items.each do |item|
@@ -16,9 +12,11 @@ class ProjectsController < ApplicationController
         end
       end
     end
-
     redirect_to root_path
+  end
 
+  def show
+    render 'pages/dashboard'
   end
 
 end

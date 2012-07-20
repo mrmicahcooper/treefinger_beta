@@ -11,9 +11,9 @@ Treefinger::Application.routes.draw do
   post '/sign_in', to: 'sessions#create', as: :user_sign_in
   post '/sign_up', to: 'users#create', as: :user_sign_up
 
-  post '/projects', to: 'projects#create', as: :projects
-
   resources :users, only: [:create]
+
+  resources :projects, only: [:create, :show]
 
 end
 

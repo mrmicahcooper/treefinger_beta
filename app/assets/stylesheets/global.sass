@@ -27,6 +27,11 @@ body
     nav.projects
       display: inline-block
       a
+        margin: 0
+        padding: 0 2px 0 4px
+        border-left: solid 1px $dark_grey
+        &:first-child
+          border: none
         &.active
           font-weight: bold
           color: $active_blue
@@ -80,16 +85,9 @@ body
                 margin: 0.5em 0
                 padding: 5px
                 +round-border(3px, #aaaaaa)
-    pre.placeholder
-      color: #cccccc
-      font-family: 'arial', sans-serif
-      position: absolute
-      top: 90px
-      left: 20px
-      z-index: 1
     section.task_form
       width: $task_form_width
-      top: 40px
+      top: 50px
       position: fixed
       nav.status
         float: right
@@ -110,6 +108,7 @@ body
             background: transparent
             z-index: 2
             position: relative
+            font-family: 'arial'
           &.actions
             input[type="submit"]
               +button-skeleton(3px, $button_green)
@@ -166,3 +165,10 @@ body
             a
               &.delete:hover
                 background: $red
+    pre.placeholder
+      color: #cccccc
+      font-family: 'arial', sans-serif
+      position: absolute
+      top: 100px
+      left: 18px
+      z-index: 1

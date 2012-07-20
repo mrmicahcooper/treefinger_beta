@@ -15,8 +15,7 @@
       - if projects.present?
         = "\u27BF" if projects.present?
         %nav.projects
-          - projects.each do |project|
-            = link_to project.name
-            |
+          - projects.each do |p|
+            = link_to p.name, project_path(p), class: "#{'active' if p.name == project.name} "
     %section.content
       = yield

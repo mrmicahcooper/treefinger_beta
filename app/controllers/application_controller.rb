@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
 
   expose(:current_user) { User.find_by_id(session[:user_id]) }
+  expose(:project) { current_user.projects.last || current_user.projects.where(['id = ?', params[:id]]) }
   expose(:projects) do
     if current_user.present?
       current_user.projects
