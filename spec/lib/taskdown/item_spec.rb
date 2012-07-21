@@ -61,7 +61,7 @@ DESC
     end
   end
 
-  describe "#attr_hash" do
+  describe "#attributes" do
 
     let(:description) do
       <<-DESC
@@ -76,7 +76,8 @@ Then I should have a new account
     end
 
     it "returns a hash of the task's attributes" do
-      task.attr_hash.should == {
+      task.attributes.should == {
+        task_string: item_string,
         name: "User signs in.",
         due_at: Time.parse('8/8/2012 5:40PM'),
         description: description.strip

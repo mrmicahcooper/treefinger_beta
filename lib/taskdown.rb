@@ -9,6 +9,7 @@ class Taskdown
 
   def self.parse(string)
     new(string).lists.map do |p|
+
       Taskdown::List.new(p.strip)
     end
   end

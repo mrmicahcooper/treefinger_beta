@@ -1,13 +1,11 @@
 class Taskdown::Item
 
-  attr_accessor :item_string
+  attr_accessor :item_string, :attributes
 
   def initialize(item_string)
     self.item_string = item_string
-  end
-
-  def attr_hash
-    {
+    self.attributes = {
+      task_string: item_string,
       name: name,
       due_at: due_at,
       description: description
@@ -21,7 +19,8 @@ class Taskdown::Item
   end
 
   def name
-    @name ||= item_string[/^[\w\s]*\./]
+    name = item_string.slice!(/^[\w\s]*\./)
+    @name ||= name.blank? ? '' : name.strip
   end
 
   def due_at

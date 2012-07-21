@@ -74,15 +74,15 @@ $(function(){
         }
       },
       showInTasksForm: function(){
-        //get just the name and description from the task and put that in
-        //there.
+        $('pre.placeholder').hide();
         var t =  $(this)
         t.toggleClass('selected');
-        $('#task_form').val(dashboard.selectedTasks());
+        $('#task_form textarea').val(dashboard.selectedTasks());
       },
       selectedTasks: function(){
-          return $('#task_list ul li.selected').map(function(){
-            return $(this).data('task');
+          return dashboard.currentProjectName + $('#task_list ul li.selected').map(function(){
+            var t = $(this)
+            return (t.data("task_name") + "\n\n" + t.data("task_description"));
           }).get().join('\n---\n\n');
       },
       clearSelectedTasks: function(){
@@ -90,6 +90,7 @@ $(function(){
           return $(this).removeClass('selected');
         })
       },
+      currentProjectName: "! " +  $('nav.projects a.active').text() + '\n\n'
     };
   dashboard.init();
 });

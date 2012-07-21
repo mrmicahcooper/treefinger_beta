@@ -1,13 +1,13 @@
 %section#task_list
   %ul
     - tasks.each do |task|
-      %li(data-task= "#{}")
+      %li(data-task_description= "#{task.description}" data-task_name= "#{task.name}")
         .actions
           = link_to "\u2713 complete", '#', class: 'complete' #complete
           = link_to "\u270E ", '#', class: 'edit' #edit
         .delete= link_to "x",'#', class: 'delete' #delete
-        %strong.task_name= task.name
-%section.task_form
+        %strong.task_name= link_to task.name, '#'
+%section#task_form
   = form_tag :projects do
     %fieldset.actions
       %nav.status

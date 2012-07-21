@@ -10,12 +10,14 @@ body
   margin: 0
   color: $dark_grey
   font-size: 14px
+  width: 1130px
+  position: relative
+  margin: 0 auto
   a
     text-decoration: none
     color: #666666
   header
     border-bottom: solid 1px $dark_grey
-    position: fixed
     z-index: 1
     width: 100%
     background: #ffffff
@@ -46,14 +48,22 @@ body
         font-weight: normal
       span.project_name
         color: $active_blue
+    h2
+      font-size: 16px
+      font-weight: normal
+      display: inline-block
+      color: $dark_grey
+      font-family: 'arial', sans-serif
+      span
+        color: $active_blue
   section.content
-    padding: 75px 0 1em 0
+    padding: 20px 0 1em 0
     display: block
-    margin: 0 0 0 35px
     position: relative
+    margin: 0 auto
     section.sign_in, section.sign_up
-      margin: 0 auto
       form
+        display: block
         h1
           font-size: 16px
           letter-spacing: -1px
@@ -85,10 +95,16 @@ body
                 margin: 0.5em 0
                 padding: 5px
                 +round-border(3px, #aaaaaa)
-    section.task_form
+    section.about
+      ul
+        margin: 0 
+        padding: 0 0 1em 1em 
+        li
+          padding: 2px
+    section#task_form
       width: $task_form_width
-      top: 50px
-      position: fixed
+      top: 10px
+      position: absolute
       nav.status
         float: right
         margin: 22px 0 0 0
@@ -120,7 +136,10 @@ body
       position: relative
       vertical-align: top
       left: $task_form_width + 20px
+      overflow-y: scroll
+      max-height: 560px
       &>ul
+        display: block
         padding: 0px
         margin: 0px
         li
@@ -140,7 +159,8 @@ body
           &.selected
             background: $active_blue
           &:hover, &.selected
-            color: #ffffff
+            a
+              color: #ffffff
             div.actions, div.delete
               color: #ffffff
               a
@@ -169,6 +189,6 @@ body
       color: #cccccc
       font-family: 'arial', sans-serif
       position: absolute
-      top: 100px
-      left: 18px
+      top: 58px
+      left: 17px
       z-index: 1

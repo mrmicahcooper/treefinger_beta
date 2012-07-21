@@ -15,3 +15,7 @@ end
 Given /^that project has a task named "(.*?)"$/ do |task_name|
   @project.tasks << Fabricate(:task, name: task_name)
 end
+
+Then /^the "([^"]*)" field should contain "([^"]*)"$/ do |field, value|
+  find_field(field).value.should =~ /#{value}/
+end

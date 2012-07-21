@@ -26,4 +26,12 @@ class User < ActiveRecord::Base
     username.blank?
   end
 
+  def current_project(list_name, project=projects.last)
+    if list_name.blank?
+      project
+    else
+      projects.find_or_create_by_name(list_name)
+    end
+  end
+
 end
