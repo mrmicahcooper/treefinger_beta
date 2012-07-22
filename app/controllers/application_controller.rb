@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user!
     unless current_user.present?
-      redirect_to :sign_in
+      redirect_to :sign_up
     end
   end
 
