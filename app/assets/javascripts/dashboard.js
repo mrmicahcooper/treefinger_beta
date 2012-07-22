@@ -2,7 +2,7 @@ $(function(){
   var dashboard = {
       init: function(){
         $('#task_list ul li').click(this.showInTasksForm);
-        $('.task_form form input[type="reset"]').click(this.clearSelectedTasks)
+        $('#task_form form input[type="reset"]').click(this.resetTaskForm)
         $("body").delegate('input.edit_task_name','blur', this.editTaskName);
         $('li a.complete').click(this.completeTask);
         $('li a.delete').click(this.deleteTask);
@@ -86,9 +86,13 @@ $(function(){
           }).get().join('\n---\n\n');
       },
       clearSelectedTasks: function(){
-        return $('#task_list ul li.selected').map(function(){
-          return $(this).removeClass('selected');
+         $('#task_list ul li.selected').map(function(){
+           $(this).removeClass('selected');
         })
+      },
+      resetTaskForm: function(){
+        dashboard.clearSelectedTasks();
+        $('pre.placeholder').show();
       },
       currentProjectName: "! " +  $('nav.projects a.active').text() + '\n\n'
     };
