@@ -2,7 +2,6 @@ Feature: User
 
   Scenario: User registers successfully
     Given I am on the home page
-    And I follow "sign up"
     When I fill in the following:
       | user_email                 | sam@example.com |
       | user_username              | sam             |
@@ -16,6 +15,7 @@ Feature: User
     And the following user:
       | email    | sam@example.com |
       | password | password        |
+    When I follow "sign in"
     When I fill in the following:
       | email_or_username | sam@example.com |
       | password          | password        |
@@ -28,6 +28,7 @@ Feature: User
       | email    | sam@example.com |
       | username | sam             |
       | password | password        |
+    When I follow "sign in"
     When I fill in the following:
       | email_or_username | sam      |
       | password          | password |

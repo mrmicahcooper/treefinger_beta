@@ -10,12 +10,13 @@
 %section#task_form
   = form_tag :projects do
     %fieldset.actions
-      %nav.status
-        = link_to 'incomplete','#', class: 'active'
-        |
-        = link_to 'complete','#'
-        |
-        = link_to 'all','#'
+      - if project.present?
+        %nav.status
+          = link_to 'incomplete', incomplete_project_path(project), class: "#{'active' if action_name == 'incomplete' || action_name ==  'show' } "
+          |
+          = link_to 'complete', complete_project_path(project), class: "#{'active' if action_name == 'complete' }  "
+          |
+          = link_to 'all', all_project_path(project), class: "#{'active' if action_name == 'all'} "
       = submit_tag 'save tasks'
       %input{ type: 'reset', value: "clear tasks" }
     %fieldset.fields
