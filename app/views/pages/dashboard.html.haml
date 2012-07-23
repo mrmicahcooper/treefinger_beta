@@ -18,10 +18,9 @@
           = link_to 'all', all_project_path(project), class: "#{'active' if action_name == 'all'} "
       %input{ type: 'reset'}
       = submit_tag 'save tasks'
-      %input{ type: 'reset', value: "clear tasks" }
     %fieldset.fields
       = text_area_tag :projects
     %fieldset.actions
       = submit_tag 'save tasks'
-      %input{ type: 'reset', value: "clear tasks" }
+      %input{ type: 'reset'}
 = render partial: 'layouts/placeholder'
