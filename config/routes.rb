@@ -14,6 +14,13 @@ Treefinger::Application.routes.draw do
   resources :users, only: [:create]
 
   resources :projects, only: [:create, :show] do
+
+    member do
+      get 'complete'
+      get 'incomplete'
+      get 'all'
+    end
+
     resources :tasks, only: [:destroy], controller: 'projects/tasks' do
       member do
         put 'complete'

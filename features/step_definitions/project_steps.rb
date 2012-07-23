@@ -25,3 +25,6 @@ Then /^that task should be completed$/ do
   @task.reload.completed_at.should be_present
 end
 
+When /^I complete "([^"]*)"$/ do |task_name|
+  page.find(:xpath, "//ul//li[contains(normalize-space(.), '#{task_name}')]//div//a[contains(normalize-space(.),'complete')]").click
+end

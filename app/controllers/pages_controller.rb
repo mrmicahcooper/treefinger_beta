@@ -9,7 +9,7 @@ class PagesController < ApplicationController
     end
   end
   expose(:tasks) do
-    project.present? ? project.tasks.incomplete : []
+    project.present? ? project.tasks : []
   end
 
 end

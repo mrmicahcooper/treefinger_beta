@@ -7,6 +7,8 @@ class Task < ActiveRecord::Base
 
   scope :incomplete, where(completed_at: nil)
 
+  scope :complete, where('completed_at IS NOT NULL')
+
   def complete
     update_attribute(:completed_at, Time.now)
   end
