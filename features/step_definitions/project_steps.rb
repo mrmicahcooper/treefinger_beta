@@ -20,3 +20,8 @@ end
 Then /^the "([^"]*)" field should contain "([^"]*)"$/ do |field, value|
   find_field(field).value.should =~ /#{value}/
 end
+
+Then /^that task should be completed$/ do
+  @task.reload.completed_at.should be_present
+end
+

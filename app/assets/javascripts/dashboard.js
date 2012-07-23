@@ -4,7 +4,7 @@ $(function(){
         $('#task_list ul li').click(this.showInTasksForm);
         $('#task_form form input[type="reset"]').click(this.resetTaskForm)
         $("body").delegate('input.edit_task_name','blur', this.editTaskName);
-        $('li a.complete').click(this.completeTask);
+        $('li a.complete').bind('click', this.completeTask);
         $('li a.delete').bind('click', this.deleteTask);
         $('li a.edit').click(this.editTask);
         $('#projects').bind('keyup.placeholder', this.togglePlaceholder)
@@ -20,10 +20,11 @@ $(function(){
         }
       },
       completeTask: function(e){
+        e.preventDefault();
         e.stopPropagation();
-        var t = $(this).closest('li');
-        $.ajax('', {
-          data: null,
+        var currentLink = $(this), t = currentLink.closest('li');
+        $.ajax(currentLink.attr('href'), {
+          type: 'PUT',
           success: function(){
             t.hide('400', function(){
               $(this).remove();

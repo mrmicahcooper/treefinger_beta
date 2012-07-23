@@ -3,8 +3,7 @@
     - tasks.each do |task|
       %li(data-task_description= "#{task.description}" data-task_name= "#{task.name}")
         .actions
-          = link_to "\u2713 complete", '#', class: 'complete' #complete
-          = link_to "\u270E ", '#', class: 'edit' #edit
+          = link_to "\u2713 complete", complete_project_task_path(project, task), class: 'complete' #complete
         .delete= link_to "x", project_task_path(project, task), method: :delete, class: 'delete' #delete
         %strong.task_name= link_to task.name, '#'
 %section#task_form
@@ -17,11 +16,11 @@
           = link_to 'complete', complete_project_path(project), class: "#{'active' if action_name == 'complete' }  "
           |
           = link_to 'all', all_project_path(project), class: "#{'active' if action_name == 'all'} "
+      %input{ type: 'reset'}
       = submit_tag 'save tasks'
-      %input{ type: 'reset', value: "clear tasks" }
     %fieldset.fields
       = text_area_tag :projects
     %fieldset.actions
       = submit_tag 'save tasks'
-      %input{ type: 'reset', value: "clear tasks" }
+      %input{ type: 'reset'}
 = render partial: 'layouts/placeholder'

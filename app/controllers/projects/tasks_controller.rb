@@ -12,4 +12,13 @@ class Projects::TasksController < ApplicationController
     end
   end
 
+  def complete
+    if task.present?
+      task.complete
+      render nothing: true, status: 204
+    else
+      render nothing: true, status: 404
+    end
+  end
+
 end

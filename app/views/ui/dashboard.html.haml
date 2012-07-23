@@ -9,6 +9,13 @@
         %strong.task_name task name
 %section.task_form
   %form
+    %fieldset.actions
+      -# %nav.status
+      -#   = link_to 'incomplete','#', class: 'active'
+      -#   |
+      -#   = link_to 'complete','#'
+      -#   |
+      -#   = link_to 'all','#'
     = render partial: 'task_actions'
     %fieldset.fields
       %textarea#task_form{ placeholder: "tasks" }
