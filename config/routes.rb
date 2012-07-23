@@ -13,7 +13,9 @@ Treefinger::Application.routes.draw do
 
   resources :users, only: [:create]
 
-  resources :projects, only: [:create, :show]
+  resources :projects, only: [:create, :show] do
+    resources :tasks, only: [:destroy], controller: 'projects/tasks'
+  end
 
 end
 

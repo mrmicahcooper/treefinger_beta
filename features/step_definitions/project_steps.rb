@@ -13,7 +13,8 @@ Given /^I have a project named "(.*?)"$/ do |project_name|
 end
 
 Given /^that project has a task named "(.*?)"$/ do |task_name|
-  @project.tasks << Fabricate(:task, name: task_name)
+  @task = Fabricate(:task, name: task_name)
+  @project.tasks << @task
 end
 
 Then /^the "([^"]*)" field should contain "([^"]*)"$/ do |field, value|
