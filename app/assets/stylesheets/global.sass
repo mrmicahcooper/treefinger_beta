@@ -75,6 +75,7 @@ body
         fieldset
           border: none
           padding: 0
+          label
           input[type="submit"]
             +button-skeleton(3px, $button_green)
             background-color: $button_green
@@ -83,6 +84,8 @@ body
             display: inline-block
             margin: 0 2em 0 0
           dl
+            dt
+              font-size: 0.9em
             dd
               margin: 0
               div.field_with_errors
@@ -91,8 +94,8 @@ body
                 color: $red
               input[type="text"], input[type="password"], input[type="email"]
                 width: 200px
+                margin-bottom: 10px
                 font-size: 14px
-                margin: 0.5em 0
                 padding: 5px
                 +round-border(3px, #aaaaaa)
     section.about

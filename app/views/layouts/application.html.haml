@@ -13,7 +13,7 @@
       %h1
         = link_to 'Tree Finger', root_path
       - if projects.present?
-        = "\u27BF" if projects.present?
+        = right_arrow if projects.present?
         %nav.projects
           - projects.each do |p|
             = link_to p.name, project_path(p), class: "#{'active' if p.name == project.name} "

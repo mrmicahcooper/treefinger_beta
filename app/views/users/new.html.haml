@@ -11,10 +11,14 @@
     %h1 Sign Up
     %fieldset
       %dl
-        %dd= form.email_field     :email, placeholder: 'email'
-        %dd= form.text_field      :username, placeholder: 'username (optional)'
-        %dd= form.password_field  :password, placeholder: 'password'
-        %dd= form.password_field  :password_confirmation, placeholder: 'password confirmation'
+        %dt= form.label :email, 'email'
+        %dd= form.email_field     :email
+        %dt= form.label :username, 'username (optional)'
+        %dd= form.text_field      :username
+        %dt= form.label :password, 'password'
+        %dd= form.password_field  :password
+        %dt= form.label :password_confirmation, 'password confirmation'
+        %dd= form.password_field  :password_confirmation
     %fieldset
       = form.submit 'sign up'
       = link_to 'sign in', :sign_in

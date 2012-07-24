@@ -3,11 +3,13 @@
     %h1 
       Sign In
       - if flash[:alert]
-        %span.alert= "\u27BF #{flash[:alert]}"
+        %span.alert= "#{right_arrow} #{flash[:alert]}".html_safe
     %fieldset
       %dl
-        %dd= text_field_tag :email_or_username, params[:email_or_username], placeholder: 'email or username'
-        %dd= password_field_tag :password, params[:password], placeholder: 'password'
+        %dt= label_tag :email_or_username, 'email or username'
+        %dd= text_field_tag :email_or_username, params[:email_or_username]
+        %dt= label_tag :password, 'password'
+        %dd= password_field_tag :password, params[:password]
     %fieldset
       %input{type: 'submit', value: 'sign in'}
       = link_to 'sign up', :sign_up
