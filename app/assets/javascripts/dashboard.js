@@ -84,8 +84,8 @@ $(function(){
       selectedTasks: function(){
           return dashboard.currentProjectName + $('#task_list ul li.selected').map(function(){
             var t = $(this)
-            return (t.data("task_name") + "\n\n" + t.data("task_description"));
-          }).get().join('\n---\n\n');
+            return (t.data("task_name") + "\n" + t.data("task_description"));
+          }).get().join("\n\n");
       },
       clearSelectedTasks: function(){
          $('#task_list ul li.selected').map(function(){

@@ -1,47 +1,18 @@
 class Taskdown::Item
 
-  attr_accessor :item_string, :attributes
+  attr_accessor :attributes, :task_string, :name, :description
 
   def initialize(item_string)
-    self.item_string = item_string
-    self.attributes = {
-      task_string: item_string,
+    self.task_string = item_string
+    self.name, self.description = item_string.slice!(/^.+\n/).strip, item_string
+  end
+
+  def attributes
+    {
       name: name,
-      due_at: due_at,
+      task_string: task_string,
       description: description
     }
-  end
-
-  def users
-    @users ||= item_string.scan(/^\+.*$/).map do |user| 
-      user[/[^+\s*]+/]
-    end
-  end
-
-  def name
-    name = item_string.slice!(/^[\w\s]*\./)
-    @name ||= name.blank? ? '' : name.strip
-  end
-
-  def due_at
-    date_string = item_string[/\d.+$/]
-    @due_at ||= date_string.blank? ? nil : Time.parse(date_string)
-  end
-
-  def parents
-    @parents ||= item_string.scan(/^@.+/).map do |parent|
-      parent.gsub('@', '').strip
-    end
-  end
-
-  def description
-    @descrption ||= item_string.scan(/^[^!@#\+\n]+/)[1..-1].join("\n").strip
-  end
-
-  def tags
-    @tags ||= description.scan(/__.*__/).map do |tag|
-      tag.gsub("__", "").strip
-    end
   end
 
 end

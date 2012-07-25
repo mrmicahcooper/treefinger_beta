@@ -1,6 +1,4 @@
-require 'taskdown'
-require 'taskdown/list.rb'
-require 'taskdown/item.rb'
+require 'spec_helper'
 
 describe Taskdown::List do
 
@@ -10,11 +8,11 @@ describe Taskdown::List do
   describe ".new" do
 
     it "creates an object with the items string" do
-      list.item_string.should_not be_nil
+      list.list_string.should_not be_nil
     end
 
     it "names the list" do
-      list.name.should == "Treefinger"
+      list.name.should == "Treefinger application"
     end
 
   end

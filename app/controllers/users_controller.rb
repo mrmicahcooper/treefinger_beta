@@ -8,7 +8,6 @@ class UsersController < ApplicationController
 
   def create
     if user.save
-      binding.pry
       session[:user_id] = user.id
       redirect_to root_path
     else
