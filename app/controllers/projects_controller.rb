@@ -28,14 +28,15 @@ class ProjectsController < ApplicationController
 
   def create
     lists.each do |list|
-      current_user.current_project(list.name, project).tap do |project|
+      @current_project = current_user.current_project(list.name, project)
+      @current_project.tap do |project|
         list.items.each do |item|
           task = project.tasks.find_or_initialize_by_name_and_project_id(item.name, project.id)
           task.update_attributes(item.attributes)
         end
       end
     end
-    redirect_to root_path
+    redirect_to project_path(@current_project)
   end
 
   def show

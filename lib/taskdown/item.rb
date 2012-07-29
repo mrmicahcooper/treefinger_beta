@@ -4,7 +4,11 @@ class Taskdown::Item
 
   def initialize(item_string)
     self.task_string = item_string
-    self.name, self.description = item_string.slice!(/^.+\n/).strip, item_string
+    if item_string.lines.count == 1
+      self.name, self.description = item_string.strip, ""
+    else
+      self.name, self.description = item_string.slice!(/^.+\n/).strip, item_string
+    end
   end
 
   def attributes

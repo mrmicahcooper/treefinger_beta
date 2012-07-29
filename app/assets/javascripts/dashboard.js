@@ -82,10 +82,14 @@ $(function(){
         $('#task_form textarea').val(dashboard.selectedTasks());
       },
       selectedTasks: function(){
-          return dashboard.currentProjectName + $('#task_list ul li.selected').map(function(){
-            var t = $(this)
-            return (t.data("task_name") + "\n" + t.data("task_description"));
-          }).get().join("\n\n");
+        return dashboard.currentProjectName + $('#task_list ul li.selected').map(function(){
+          var t = $(this);
+          if (t.data("task_description") == "" ) {
+            return (t.data("task_name") + "\n");
+          }else{
+            return ("\n" + t.data("task_name") + "\n" + t.data("task_description") + "\n");
+          }
+        }).get().join('');
       },
       clearSelectedTasks: function(){
          $('#task_list ul li.selected').map(function(){
