@@ -3,9 +3,9 @@
     - tasks.each do |task|
       %li(data-task_description= "#{task.description}" data-task_name= "#{task.name}")
         .actions
-          = link_to "\u2713 complete", complete_project_task_path(project, task), class: 'complete'
+          = link_to "\u2713 complete", complete_project_task_path(project, task), class: 'complete' unless task.completed?
         .delete= link_to "x", project_task_path(project, task), method: :delete, class: 'delete'
-        %strong.task_name= link_to task.name, '#'
+        %strong.task_name= link_to task_name(task), '#'
 %section#task_form
   = form_tag :projects do
     %fieldset.actions

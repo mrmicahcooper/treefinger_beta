@@ -13,4 +13,8 @@ class Task < ActiveRecord::Base
     update_attribute(:completed_at, Time.now)
   end
 
+  def completed?
+    completed_at.present? 
+  end
+
 end

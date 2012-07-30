@@ -9,8 +9,9 @@ describe Task do
     before { task.complete }
 
     it "adds a completed date" do
-      task.completed_at.should be_present
+      task.completed?.should be_true
     end
+
   end
 
 end
