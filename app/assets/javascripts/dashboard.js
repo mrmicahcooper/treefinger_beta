@@ -8,6 +8,7 @@ $(function(){
         $('li a.delete').bind('click', this.deleteTask);
         $('li a.edit').click(this.editTask);
         $('#projects').bind('keyup.placeholder', this.togglePlaceholder)
+        $('#projects').tabby();
       },
       togglePlaceholder: function(){
         var e = $(this);
@@ -81,13 +82,26 @@ $(function(){
         t.toggleClass('selected');
         $('#task_form textarea').val(dashboard.selectedTasks());
       },
+      //TODO Refactor this uglyassjavascript
       selectedTasks: function(){
-        return dashboard.currentProjectName + $('#task_list ul li.selected').map(function(){
-          var t = $(this);
-          if (t.data("task_description") == "" ) {
-            return (t.data("task_name") + "\n");
+        var $line_breaks = ""
+        return dashboard.currentProjectName + $('#task_list ul li.selected').map(function(i){
+          var t = $(this), task_string = "";
+          if (t.data("task_description") == "" ) {// if it's just a task (no description)
+            if ($line_breaks == "\n\n"){// if the last line task had a description
+              task_string = "\n" + t.data("task_name"); //Add an extra break after the task with the description
+            }else{
+              task_string = t.data("task_name");
+            }
+            $line_breaks = "\n";
+          }else {
+            $line_breaks = "\n\n";
+            task_string = t.data("task_name") + "\n" + t.data("task_description");
+          }
+          if (i == 0){// if it's the first task, don't add the line breaks
+            return (task_string);
           }else{
-            return ("\n" + t.data("task_name") + "\n" + t.data("task_description") + "\n");
+            return ($line_breaks + task_string);
           }
         }).get().join('');
       },
