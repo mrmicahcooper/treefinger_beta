@@ -36,7 +36,7 @@ class ProjectsController < ApplicationController
         end
       end
     end
-    redirect_to project_path(@current_project)
+    redirect_to project_path(@current_project || project)
   end
 
   def show
