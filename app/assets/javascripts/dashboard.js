@@ -8,7 +8,6 @@ $(function(){
         $('li a.delete').bind('click', this.deleteTask);
         $('li a.edit').click(this.editTask);
         $('#projects').bind('keyup.placeholder', this.togglePlaceholder)
-        $('#projects').tabby();
       },
       togglePlaceholder: function(){
         var e = $(this);
