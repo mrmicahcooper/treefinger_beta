@@ -11,11 +11,11 @@
     %fieldset.actions
       - if project.present?
         %nav.status
-          = link_to 'incomplete', incomplete_project_path(project), class: "#{'active' if action_name == 'incomplete' || action_name ==  'show' } "
+          = active_link('incomplete', incomplete_project_path(project), /^incomplete|show|dashboard/)
           |
-          = link_to 'complete', complete_project_path(project), class: "#{'active' if action_name == 'complete' }  "
+          = active_link('complete', complete_project_path(project), /^complete/)
           |
-          = link_to 'all', all_project_path(project), class: "#{'active' if action_name == 'all'} "
+          = active_link('all', all_project_path(project), /all/)
       %input{ type: 'reset'}
       = submit_tag 'save tasks'
     %fieldset.fields
