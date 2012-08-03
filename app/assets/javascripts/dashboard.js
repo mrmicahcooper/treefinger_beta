@@ -8,6 +8,33 @@ $(function(){
         $('li a.delete').bind('click', this.deleteTask);
         $('li a.edit').click(this.editTask);
         $('#projects').bind('keyup.placeholder', this.togglePlaceholder)
+        $('#projects').bind('keydown.intent', this.autoIndent)
+      },
+      autoIndent: function(e){
+        var t = $(this);
+        if (e.keyCode == 13){
+           var caret = t[0].selectionStart,
+           projectString = t.val(),
+           stringBeforeCaret = projectString.slice(0, caret);
+           stringAfterCaret = projectString.slice(caret);
+
+           previousLineStartLocation = function(){
+             for (x = caret; x >= 0; x--) {
+               if (stringBeforeCaret[x] == "\n"){ return x + 1 }
+               else if( x == 0) { return x }
+             }
+           }
+
+           previousLine = projectString.slice(previousLineStartLocation(), caret);
+           spaces = previousLine.match(/^[ ]*/)[0];
+           spacesLength = spaces.length;
+           if (spacesLength > 0 && $.trim(previousLine) != ""){
+             newProjectString = (stringBeforeCaret +"\n" + spaces) + stringAfterCaret;
+             newCaret = caret + spacesLength + 1;
+             t.val(newProjectString).get(0).setSelectionRange(newCaret,newCaret)
+             return false;
+           }
+        }
       },
       togglePlaceholder: function(){
         var e = $(this);
@@ -66,10 +93,8 @@ $(function(){
             task.data("task_name", new_task_name)
         t.replaceWith('<strong class="task_name">'+new_task_name+'</strong>');
         if (old_task_name != new_task_name){
-          $.ajax(
-            '',
-            {
-              task_id: 'some id',
+          $.ajax('',
+            { task_id: 'some id',
               name: new_task_name
             }//Get task id for this
           );
