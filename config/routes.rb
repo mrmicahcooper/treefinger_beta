@@ -28,5 +28,7 @@ Treefinger::Application.routes.draw do
     end
   end
 
+  match 'heartbeat', to: proc { [200, {}, ''.chars] }
+
 end
 
