@@ -8,6 +8,7 @@
         %strong.task_name= link_to task_name(task), '#'
 %section#task_form
   = form_tag :projects do
+    = hidden_field_tag 'id', project_id
     %fieldset.actions
       - if project.present?
         %nav.status

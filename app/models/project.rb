@@ -2,6 +2,6 @@ class Project < ActiveRecord::Base
 
   attr_accessible :name
   belongs_to :user
-  has_many :tasks
+  has_many :tasks, dependent: :destroy
 
 end

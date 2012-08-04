@@ -27,3 +27,9 @@ Feature: Projects
 
     When I follow "Project 1"
     Then I should see "Task 1"
+
+  Scenario: User adds a project to the current project with specifiying
+    Given I am signed in
+    When I fill in "projects" with "This task"
+    And I press "save task"
+    Then I should see "First Project"
