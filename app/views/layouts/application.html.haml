@@ -9,6 +9,8 @@
   %body
     %header
       %nav.settings
+        #{current_user.username || current_user.email}
+        = right_arrow
         = link_to 'sign out', :sign_out
       %h1
         = link_to 'Tree Finger', root_path
