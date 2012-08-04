@@ -1,15 +1,21 @@
 @import "mixins"
-$dark_grey: #444444
+$dark_grey: #444
+$grey: #aaa
 $task_form_width: 500px
 $active_blue: #146bfb
 $button_green: #029f1c
 $red: #e20606
+$purple: #8706e2
+
+*
+  font-family: "Ubuntu Mono"
 
 body
-  font-family: 'arial', sans-serif
+  font-family: 'Ubuntu Mono', monospace, sans-serif
+  letter-spacing: -0.5px
   margin: 0
   color: $dark_grey
-  font-size: 14px
+  font-size: 17px
   width: 1130px
   position: relative
   margin: 0 auto
@@ -17,7 +23,7 @@ body
     text-decoration: none
     color: #666666
   header
-    border-bottom: solid 1px $dark_grey
+    border-bottom: solid 1px $grey
     z-index: 1
     width: 100%
     background: #ffffff
@@ -42,7 +48,7 @@ body
     h1
       font-size: 24px
       margin: 0px
-      padding: 5px 0 5px 1em
+      padding: 5px 0 5px 0
       display: inline-block
       a
         font-family: 'Oleo Script', cursive
@@ -55,21 +61,21 @@ body
       font-weight: normal
       display: inline-block
       color: $dark_grey
-      font-family: 'arial', sans-serif
       span
         color: $active_blue
   section.content
-    padding: 20px 0 1em 0
     display: block
     position: relative
     margin: 0 auto
+    section.about
+      padding-top: 1em
     section.sign_in, section.sign_up
+      padding-top: 1em
       form
         display: block
         h1
-          font-size: 16px
-          letter-spacing: -1px
-          margin: 0px
+          font-size: 18px
+          margin: 0 0 15px 0
           span.alert
             color: $red
             font-weight: normal
@@ -77,6 +83,7 @@ body
         fieldset
           border: none
           padding: 0
+          padding-bottom: 0
           label
           input[type="submit"]
             +button-skeleton(3px, $button_green)
@@ -86,6 +93,7 @@ body
             display: inline-block
             margin: 0 2em 0 0
           dl
+            margin: 0
             dt
               font-size: 0.9em
             dd
@@ -101,95 +109,82 @@ body
                 padding: 5px
                 +round-border(3px, #aaaaaa)
     section.about
+      h1
+        font-size: 18px
+        margin: 0 0 15px 0
+      >ul
+        margin: 0
+        padding: 0 0 1em 1em
       ul
-        margin: 0 
-        padding: 0 0 1em 1em 
         li
           padding: 2px
     section#task_form
       width: $task_form_width
-      top: 10px
+      top: 4px
       position: absolute
       nav.status
         float: right
-        margin: 22px 0 0 0
+        margin-bottom: 7px
+        vertical-align: middle
         a.active
           font-weight: bold
           color: $active_blue
       form
         fieldset
           border: none
-          &.fields
+          margin: 0
+          padding: 0
+          width: 100%
           textarea
             width: 100%
-            padding: 5px
-            font-size: 14px
-            min-height: 500px
-            +round-border(3px, #aaaaaa)
-            background: transparent
+            font-size: 16px
+            border: none
+            border: solid 1px $grey
             z-index: 2
+            color: $dark_grey
             position: relative
-            font-family: 'arial'
+            font-family: 'Ubuntu Mono', monospace
+            &:focus
+              border: solid 1px $active_blue
           &.actions
-            input[type="submit"]
-              +button-skeleton(3px, $button_green)
-              background: $button_green
+            input
+              margin: 0
+            &[type="submit"]
               display: inline
-              color: #ffffff
     section#task_list
-      width: 600px
+      width: 620px
       position: relative
       vertical-align: top
-      left: $task_form_width + 20px
-      overflow-y: scroll
-      max-height: 560px
+      left: $task_form_width + 10px
+      overflow-y: auto
       &>ul
         display: block
         padding: 0px
-        margin: 0px
+        margin-top: -1px
         li
-          input
-            +round-border(3px, #ffffff)
-            margin-top: -2px
-            border: solid 1px $active_blue
+          padding-right: 10px
+          border: solid 1px $grey
+          position: relative
           list-style: none
-          padding: 10px 4px 7px 4px
-          border: solid 1px #fff
-          +round-border(3px, none)
-          &:nth-child(odd)
-            background: #eeeeee
+          margin-bottom: 2px
+          background: #eee
+          height: 26px
           &:hover
-            background: #a3d1fc
-            border: solid 1px #aaaaaa
-          &.selected
-            background: $active_blue
+            border: solid 1px black
           &:hover, &.selected
+            background: $active_blue
             a
-              color: #ffffff
-            div.actions, div.delete
-              color: #ffffff
-              a
-                color: #fff
-                border: solid 1px #ffffff
-          div.actions, div.delete
-            float: left
-            padding: 0 10px 0 0
-            a
-              padding: 2px 5px
-              +round-border(3px, #dddddd)
-              &:hover
-                color: #ffffff
-                border: solid 1px #ffffff
-              &.complete:hover
-                background: $button_green
-              &.edit:hover
-                background: #8706e2
-          div.delete
+              color: #fff
+          a
+            padding-left: 5px
+            vertical-align: middle
+          a.delete
             float: right
-            padding: 0 10px 0 0
-            a
-              &.delete:hover
-                background: $red
+            +task-button($red)
+          a.complete
+            float:left
+            +task-button($button_green)
+            border-left: none
     pre.placeholder
       color: #cccccc
       font-family: 'arial', sans-serif

@@ -2,10 +2,9 @@
   %ul
     - tasks.each do |task|
       %li(data-task_description= "#{task.description}" data-task_name= "#{task.name}")
-        .actions
-          = link_to "\u2713 complete", complete_project_task_path(project, task), class: 'complete' unless task.completed?
-        .delete= link_to "x", project_task_path(project, task), method: :delete, class: 'delete'
-        %strong.task_name= link_to task_name(task), '#'
+        = link_to "\u2713 complete", complete_project_task_path(project, task), class: 'complete' unless task.completed?
+        = link_to task_name(task), '#'
+        = link_to "x", project_task_path(project, task), method: :delete, class: 'delete'
 %section#task_form
   = form_tag :projects do
     = hidden_field_tag 'id', project_id
@@ -24,4 +23,4 @@
     %fieldset.actions
       = submit_tag 'save tasks'
       %input{ type: 'reset', value: "clear tasks" }
-= render partial: 'layouts/placeholder'
+-# = render partial: 'layouts/placeholder'

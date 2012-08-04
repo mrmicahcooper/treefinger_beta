@@ -26,5 +26,5 @@ Then /^that task should be completed$/ do
 end
 
 When /^I complete "([^"]*)"$/ do |task_name|
-  page.find(:xpath, "//ul//li[contains(normalize-space(.), '#{task_name}')]//div//a[contains(normalize-space(.),'complete')]").click
+  page.find(:xpath, "//ul//li[contains(normalize-space(.), '#{task_name}')]//a[contains(normalize-space(.),'complete')]").click
 end

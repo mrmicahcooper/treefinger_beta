@@ -9,7 +9,12 @@ $(function(){
         $('li a.edit').click(this.editTask);
         $('#projects').bind('keyup.placeholder', this.togglePlaceholder)
         $('#projects').bind('keydown.intent', this.autoIndent)
+        $('#task_list').css('height', this.mainSectionHeight)
+        $('#projects').css('height', this.textareaHeight)
+
       },
+      mainSectionHeight: $(window).height() - $('header').height() - 5,
+      textareaHeight: $(window).height() - $('header').height() - 75,
       autoIndent: function(e){
         var t = $(this);
         if (e.keyCode == 13){

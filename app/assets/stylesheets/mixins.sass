@@ -8,3 +8,15 @@
   font-weight: bold
   padding: 8px
   +round-border($radius, $color)
+
+= task-button($color)
+  border: solid 1px $grey
+  border-top: none
+  border-bottom: none
+  display: inline-block
+  position: relative
+  padding: 2px 5px 5px 5px
+  &:hover
+    background: $color
+    color: #ffffff
+    border-color: #000000

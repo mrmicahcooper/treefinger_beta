@@ -1,14 +1,15 @@
 %section.about
+  %h1 Sign Up
   :markdown
     - Tree Finger is a project and task manager
     - Made for people who hate using project and task managers
     - That uses a simple typing syntax to manage tasks items
-    - So you can add and edit your tasks very quickly
-    - And remember them without worrying
-    - Sign up for free. See what I mean
+      - It's just indenting (that thing you learned in elementary school)
+    - Then you can add and edit your tasks and descriptions very quickly
+    - So managing your workflow doesn't get in the way of your workflow
+    - Hell yeah!
 %section.sign_up
   = form_for user, url: :user_sign_up do |form|
-    %h1 Sign Up
     %fieldset
       %dl
         %dt= form.label :email, 'email'
