@@ -2,7 +2,8 @@ Feature: User
 
   Scenario: User registers successfully
     Given I am on the home page
-    When I fill in the following:
+    When I follow "sign up"
+    And I fill in the following:
       | user_email                 | sam@example.com |
       | user_username              | sam             |
       | user_password              | password        |
