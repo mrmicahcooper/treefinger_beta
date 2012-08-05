@@ -33,5 +33,10 @@ class ProjectsController < PagesController
     render 'pages/dashboard'
   end
 
+  def destroy
+    project.destroy
+    redirect_to root_path
+  end
+
 end
 

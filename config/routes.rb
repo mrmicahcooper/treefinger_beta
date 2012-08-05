@@ -12,7 +12,7 @@ Treefinger::Application.routes.draw do
 
   resources :users, only: [:create]
 
-  resources :projects, only: [:create, :show] do
+  resources :projects, only: [:create, :show, :destroy] do
 
     member do
       get 'complete'

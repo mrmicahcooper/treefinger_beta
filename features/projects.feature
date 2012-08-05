@@ -33,3 +33,10 @@ Feature: Projects
     When I fill in "projects" with "This task"
     And I press "save task"
     Then I should see "First Project"
+
+  Scenario: User deletes a project
+    Given I am signed in
+    And I have a project named "Project1"
+    And I am on the home page
+    When I follow "delete this project"
+    Then I should not see "Project1"

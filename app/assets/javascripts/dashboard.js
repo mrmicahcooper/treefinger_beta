@@ -12,6 +12,7 @@ $(function(){
         $('#task_list').css('height', this.mainSectionHeight);
         $('#projects').css('height', this.textareaHeight);
         $('#user_email').focus();
+        $('#projects').focus();
 
       },
       mainSectionHeight: $(window).height() - $('header').height() - 5,
