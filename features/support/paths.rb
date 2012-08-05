@@ -3,7 +3,7 @@ module NavigationHelpers
     case page_name
 
     when /the home\s?page/
-      '/'
+      '/home'
 
     when /^that ([\w ]+)'s page$/
       polymorphic_path(instance_variable_get("@#{$1.parameterize('_')}"))

@@ -1,5 +1,11 @@
 class PagesController < ApplicationController
 
+  layout 'session', only: [:home]
+
+  skip_before_filter :authenticate_user!, only: [:home]
+
+  expose(:user)
+
   expose(:projects) { current_user.projects || [] }
   expose(:project) do
     if params[:id].present?

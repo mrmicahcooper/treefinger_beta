@@ -4,8 +4,7 @@ Treefinger::Application.routes.draw do
 
   match 'ui(/:action)', controller: 'ui'
 
-  get '/sign_in', to: 'sessions#new', as: :sign_in
-  get '/sign_up', to: 'users#new', as: :sign_up
+  get '/home', to: 'pages#home', as: :home
   get '/sign_out', to: 'sessions#destroy', as: :sign_out
 
   post '/sign_in', to: 'sessions#create', as: :user_sign_in

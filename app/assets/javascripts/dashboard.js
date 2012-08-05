@@ -7,10 +7,11 @@ $(function(){
         $('li a.complete').bind('click', this.completeTask);
         $('li a.delete').bind('click', this.deleteTask);
         $('li a.edit').click(this.editTask);
-        $('#projects').bind('keyup.placeholder', this.togglePlaceholder)
-        $('#projects').bind('keydown.intent', this.autoIndent)
-        $('#task_list').css('height', this.mainSectionHeight)
-        $('#projects').css('height', this.textareaHeight)
+        $('#projects').bind('keyup.placeholder', this.togglePlaceholder);
+        $('#projects').bind('keydown.intent', this.autoIndent);
+        $('#task_list').css('height', this.mainSectionHeight);
+        $('#projects').css('height', this.textareaHeight);
+        $('#user_email').focus();
 
       },
       mainSectionHeight: $(window).height() - $('header').height() - 5,

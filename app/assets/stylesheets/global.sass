@@ -68,9 +68,18 @@ body
     position: relative
     margin: 0 auto
     section.about
-      padding-top: 1em
+      padding-top: 2em
+    section.sign_in
+      +round-border(3px, #dddddd)
+      background: #eeeeee
+      margin: 1em
+      padding: 1em 2em
+      position: absolute
+      right: 0px
     section.sign_in, section.sign_up
       padding-top: 1em
+      display: inline-block
+      vertical-align: top
       form
         display: block
         h1
@@ -136,16 +145,18 @@ body
           padding: 0
           width: 100%
           textarea
+            margin-top: 4px
             width: 100%
             font-size: 16px
             border: none
-            border: solid 1px $grey
+            +round-border(3px, #dddddd)
+            background: #eeeeee
             z-index: 2
             color: $dark_grey
             position: relative
             font-family: 'Ubuntu Mono', monospace
             &:focus
-              border: solid 1px $active_blue
+              border: solid 1px #cccccc
           &.actions
             input
               margin: 0

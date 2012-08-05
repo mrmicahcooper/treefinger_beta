@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'bcrypt-ruby'
-gem 'decent_exposure'
+gem 'decent_exposure', '2.0.0.rc1'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'newrelic_rpm'
