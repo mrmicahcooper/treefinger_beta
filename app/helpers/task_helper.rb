@@ -8,6 +8,6 @@ module TaskHelper
   end
 
   def adjusted_task_name(name)
-    name.length > 48 ? name[0..46] + "...." : name
+    name.length > 47 ? name[0..45] + "...." : name
   end
 end
