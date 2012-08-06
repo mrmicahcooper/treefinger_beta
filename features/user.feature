@@ -1,6 +1,6 @@
 Feature: User
 
-  Scenario: User registers successfully
+  Scenario: User registers successfully. Sample project is created
     Given I am on the home page
     And I fill in the following:
       | user_email                 | sam@example.com |
@@ -9,6 +9,13 @@ Feature: User
       | user_password_confirmation | password        |
     And I press "sign up"
     Then I should be on the root page
+    And I should see "Sample Project"
+    And I should see "How to create a new project"
+    And I should see "How to create tasks"
+    And I should see "How to create task descriptions"
+    And I should see "Sample item 1"
+    And I should see "Sample item 2"
+    And I should see "Sample item 3"
 
   Scenario: User signs in with email
     Given I am on the home page

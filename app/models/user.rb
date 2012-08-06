@@ -34,4 +34,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  def create_sample_project
+    projects.create(Project::SAMPLE)
+  end
+
 end

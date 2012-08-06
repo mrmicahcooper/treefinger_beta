@@ -27,5 +27,15 @@ describe User do
 
   end
 
+  describe "#create_sample_project" do
+    let(:user) { Fabricate(:user) }
+
+    it "creates sample tasks with instructions" do
+      user.create_sample_project
+      user.projects.last.tasks.count.should == 6
+    end
+
+  end
+
 
 end
