@@ -19,6 +19,7 @@ body
   width: 1130px
   position: relative
   margin: 0 auto
+  padding: 0 2em
   a
     text-decoration: none
     color: #666666
@@ -38,8 +39,8 @@ body
       display: inline-block
       a
         margin: 0
-        padding: 0 2px 0 4px
-        border-left: solid 1px $dark_grey
+        padding: 0 2px 0 8px
+        border-left: solid 1px $grey
         &:first-child
           border: none
         &.active
@@ -74,8 +75,7 @@ body
       background: #eeeeee
       margin: 1em
       padding: 1em 2em
-      position: absolute
-      right: 0px
+      float: right
     section.sign_in, section.sign_up
       padding-top: 1em
       display: inline-block
@@ -195,10 +195,12 @@ body
           a.delete
             float: right
             +task-button($red)
+            vertical-align: middle
           a.complete
             float:left
             +task-button($button_green)
             border-left: none
+            vertical-align: middle
     pre.placeholder
       color: #cccccc
       font-family: 'arial', sans-serif

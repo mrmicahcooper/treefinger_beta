@@ -3,23 +3,18 @@ $(function(){
       init: function(){
         $('#task_list ul li').click(this.showInTasksForm);
         $('#task_form form input[type="reset"]').click(this.resetTaskForm)
-        $("body").delegate('input.edit_task_name','blur', this.editTaskName);
         $('li a.complete').bind('click', this.completeTask);
         $('li a.delete').bind('click', this.deleteTask);
-        $('li a.edit').click(this.editTask);
-        $('#projects').bind('keyup.placeholder', this.togglePlaceholder);
         $('#projects').bind('keydown.intent', this.autoIndent);
         $('#task_list').css('height', this.mainSectionHeight);
         $('#projects').css('height', this.textareaHeight);
-        $('#user_email').focus();
         $('#projects').focus();
-
       },
       mainSectionHeight: $(window).height() - $('header').height() - 5,
       textareaHeight: $(window).height() - $('header').height() - 75,
       autoIndent: function(e){
         var t = $(this);
-        if (e.keyCode == 13){
+        if (e.keyCode === 13){
            var caret = t[0].selectionStart,
            projectString = t.val(),
            stringBeforeCaret = projectString.slice(0, caret);
@@ -41,16 +36,6 @@ $(function(){
              t.val(newProjectString).get(0).setSelectionRange(newCaret,newCaret)
              return false;
            }
-        }
-      },
-      togglePlaceholder: function(){
-        var e = $(this);
-        if (e.val().trim() == ""){
-          $('pre.placeholder').show();
-          e.val('');
-        }
-        else{
-          $('pre.placeholder').hide();
         }
       },
       completeTask: function(e){
@@ -81,34 +66,7 @@ $(function(){
             );
         }});
       },
-      editTask: function(e){
-        var task = $(this).closest('li'),
-            t = task.find('.task_name'),
-            task_name = t.text();
-        task.data('task_name', task_name);
-        t.replaceWith('<input class="edit_task_name" value="'+task_name+'" />')
-        task.find('input').focus();
-        if (task.hasClass('selected')){
-          e.stopPropagation();
-        }
-      },
-      editTaskName: function(){
-        var t = $(this),
-            task = t.closest('li'),
-            new_task_name = t.val(),
-            old_task_name = task.data("task_name");
-            task.data("task_name", new_task_name)
-        t.replaceWith('<strong class="task_name">'+new_task_name+'</strong>');
-        if (old_task_name != new_task_name){
-          $.ajax('',
-            { task_id: 'some id',
-              name: new_task_name
-            }//Get task id for this
-          );
-        }
-      },
       showInTasksForm: function(){
-        $('pre.placeholder').hide();
         var t =  $(this)
         t.toggleClass('selected');
         $('#task_form textarea').val(dashboard.selectedTasks());
@@ -143,7 +101,6 @@ $(function(){
       },
       resetTaskForm: function(){
         dashboard.clearSelectedTasks();
-        $('pre.placeholder').show();
       },
       currentProjectName: "! " +  $('nav.projects a.active').text() + '\n\n'
     };
