@@ -1,4 +1,5 @@
 module ApplicationHelper
+
   def right_arrow
     "&rarr;".html_safe
   end

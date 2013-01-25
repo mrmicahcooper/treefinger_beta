@@ -6,8 +6,6 @@ $(function(){
         $('li a.complete').bind('click', this.completeTask);
         $('li a.delete').bind('click', this.deleteTask);
         $('#projects').bind('keydown.intent', this.autoIndent);
-        $('#task_list').css('height', this.mainSectionHeight);
-        $('#projects').css('height', this.textareaHeight);
         $('#projects').focus();
       },
       mainSectionHeight: $(window).height() - $('header').height() - 5,
